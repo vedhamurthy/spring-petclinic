@@ -16,7 +16,9 @@ pipeline {
         stage('Deploy') {
           steps {
             input 'Do you approve the deployment?'
-            echo 'Deploying...'
+            sh 'scp target/*.jar user@vedlatha1113.mylabserver.com:/opt/pet/'
+            sh "ssh user@vedlatha1113.mylabserver.com 'nohup java -jar /opt/pet/*jar &'"
+
           }
         }
 
