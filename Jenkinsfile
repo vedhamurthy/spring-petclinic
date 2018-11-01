@@ -12,6 +12,14 @@ pipeline {
                 junit '**/target/surefire-reports/TEST-*.xml'
                 archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
             }
-        }	
+        }
+        stage('Deploy') {
+          steps {
+            input 'Do you approve the deployment?'
+            echo 'Deploying...'
+          }
+        }
+
+	
      }
 }
